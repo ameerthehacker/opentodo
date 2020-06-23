@@ -4,18 +4,16 @@ import (
 	"fmt"
 	"github.com/gin-gonic/gin"
 	"log"
+	"opentodo/config"
 	"opentodo/controllers"
-	"os"
 	"strconv"
 )
 
 func main() {
-	envPort := os.Getenv("HTTP_PORT")
-
-	if len(envPort) == 0 {
-		envPort = "8080"
-	}
-
+	envPort := config.GetConfig(config.Config{
+		Name: "HTTP_PORT",
+		DefaultValue: "8000",
+	})
 	port, err := strconv.ParseInt(envPort, 10, 32)
 
 	if err != nil {

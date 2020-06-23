@@ -11,7 +11,7 @@ func TodosController(router *gin.Engine) {
 	todos := []models.Todo{
 		{
 			Title: "Buy Eggs",
-			Done: false,
+			Done:  false,
 		},
 	}
 
