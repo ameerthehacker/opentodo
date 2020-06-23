@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"github.com/gin-gonic/gin"
+	"github.com/joho/godotenv"
 	"log"
 	"opentodo/config"
 	"opentodo/controllers"
@@ -10,6 +11,8 @@ import (
 )
 
 func main() {
+	// Load the config from .env if possible
+	_ = godotenv.Load()
 	envPort := config.GetConfig(config.Config{
 		Name:         "HTTP_PORT",
 		DefaultValue: "8000",
