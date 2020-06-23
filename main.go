@@ -11,7 +11,7 @@ import (
 
 func main() {
 	envPort := config.GetConfig(config.Config{
-		Name: "HTTP_PORT",
+		Name:         "HTTP_PORT",
 		DefaultValue: "8000",
 	})
 	port, err := strconv.ParseInt(envPort, 10, 32)

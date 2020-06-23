@@ -15,8 +15,8 @@ func (s *ConfigTestSuite) TestValidConfig() {
 	_ = os.Setenv("PORT", "8000")
 
 	assert.Equal(s.T(), GetConfig(Config{
-		Name:         "PORT",
-		Required:     false,
+		Name:     "PORT",
+		Required: false,
 	}), "8000")
 }
 
@@ -31,8 +31,8 @@ func (s *ConfigTestSuite) TestDefaultConfig() {
 func (s *ConfigTestSuite) TestInValidConfig() {
 	assert.PanicMatches(s.T(), func() {
 		GetConfig(Config{
-			Name:         "WRONG",
-			Required:     true,
+			Name:     "WRONG",
+			Required: true,
 		})
 	}, "Config WRONG is required")
 }
