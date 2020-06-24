@@ -10,11 +10,11 @@ import (
 func main() {
 	app := cli.NewApp()
 
-	app.Commands = []cli.Command {
+	app.Commands = []cli.Command{
 		{
-			Name: "create",
+			Name:        "create",
 			Description: "Create a new migration",
-			Action: func(context * cli.Context) {
+			Action: func(context *cli.Context) {
 				migrationName := context.Args().Get(0)
 
 				fmt.Println(migrationName)
