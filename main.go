@@ -9,12 +9,15 @@ import (
 	"opentodo/config"
 	"opentodo/controllers"
 	"opentodo/db"
+	"opentodo/utils"
 	"strconv"
 )
 
 func main() {
 	// Load the config from .env if possible
-	_ = godotenv.Load()
+	err := godotenv.Load()
+	utils.Warn(err, "No .env file was found in the root, defaulting to use environment variables")
+
 	envPort := config.GetConfig(config.Config{
 		Name:         "HTTP_PORT",
 		DefaultValue: "8000",
@@ -23,7 +26,11 @@ func main() {
 	// Connect to postgres
 	dbConfig := db.GetDBConfig()
 	connection, err := db.Connect(dbConfig)
-	defer connection.Close()
+	defer func() {
+		if err != nil {
+			connection.Close()
+		}
+	}()
 
 	if err != nil {
 		log.Fatalf("Unable to connect to db: %v", err)

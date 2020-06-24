@@ -15,7 +15,7 @@ func TodosController(router *gin.Engine) {
 		},
 	}
 
-	todosRouter.GET("/", func(context *gin.Context) {
-		context.JSON(http.StatusOK, todos)
+	todosRouter.GET("/", func(ctx *gin.Context) {
+		ctx.JSON(http.StatusOK, todos)
 	})
 }
