@@ -22,8 +22,8 @@ func main() {
 
 	// Connect to postgres
 	dbConfig := db.GetDBConfig()
-	db, err := db.Connect(dbConfig)
-	defer db.Close()
+	connection, err := db.Connect(dbConfig)
+	defer connection.Close()
 
 	if err != nil {
 		log.Fatalf("Unable to connect to db: %v", err)
