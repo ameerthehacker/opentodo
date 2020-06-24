@@ -1,4 +1,5 @@
 CREATE TABLE IF NOT EXISTS todos (
     id SERIAL PRIMARY KEY,
-    title VARCHAR(225)
+    title VARCHAR(225),
+    done BOOLEAN
 )
