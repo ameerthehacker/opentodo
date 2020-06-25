@@ -9,9 +9,9 @@ import (
 
 func TodosController(router *gin.Engine, connection *gorm.DB) {
 	todosRouter := router.Group("/todos")
-	var todoInput struct{
-		Title* string `json:"title" binding:"required"`
-		Done* bool `json:"done" binding:"required"`
+	var todoInput struct {
+		Title *string `json:"title" binding:"required"`
+		Done  *bool   `json:"done" binding:"required"`
 	}
 
 	todosRouter.GET("/", func(ctx *gin.Context) {
@@ -47,7 +47,6 @@ func TodosController(router *gin.Engine, connection *gorm.DB) {
 		ctx.Status(http.StatusOK)
 	})
 
-
 	todosRouter.PUT("/:id", func(ctx *gin.Context) {
 		id, _ := ctx.Params.Get("id")
 		err := ctx.BindJSON(&todoInput)
@@ -57,7 +56,7 @@ func TodosController(router *gin.Engine, connection *gorm.DB) {
 		} else {
 			connection.Model(new(models.Todo)).Where("id = ?", id).Updates(models.Todo{
 				Title: *todoInput.Title,
-				Done: *todoInput.Done,
+				Done:  *todoInput.Done,
 			})
 
 			ctx.Status(http.StatusOK)
