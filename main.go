@@ -48,7 +48,7 @@ func main() {
 
 	router := gin.Default()
 
-	controllers.TodosController(router)
+	controllers.TodosController(router, connection)
 
-	router.Run(fmt.Sprintf(":%d", port))
+	_ = router.Run(fmt.Sprintf(":%d", port))
 }
