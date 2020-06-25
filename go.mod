@@ -10,5 +10,6 @@ require (
 	github.com/joho/godotenv v1.3.0
 	github.com/stretchr/testify v1.6.1
 	github.com/urfave/cli v1.22.4
-	golang.org/x/sys v0.0.0-20200323222414-85ca7c5b95cd // indirect
+	golang.org/x/sys v0.0.0-20200622214017-ed371f2e16b4 // indirect
+	gopkg.in/yaml.v2 v2.3.0 // indirect
 )

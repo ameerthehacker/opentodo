@@ -5,7 +5,3 @@ type Todo struct {
 	Title string `json:"title" gorm:"type:VARCHAR(225)"`
 	Done  bool   `json:"done" gorm:"boolean"`
 }
-
-func (Todo) TableName() string {
-	return "todos"
-}
